@@ -23,7 +23,7 @@ function ProfileScreen() {
 						<h2>{user.email}</h2>
 						<div className="profileScreen__plans">
 							<h2>Plans(Current Plan : premium)</h2>
-							<h3>Renewal date: 04/03/2021</h3>
+
 							<PlansScreen />
 
 							<button

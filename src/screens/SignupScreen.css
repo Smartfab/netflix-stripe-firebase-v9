@@ -19,15 +19,15 @@
 	font-weight: 900;
 	display: flex;
 	flex-direction: column;
-	padding: 10px;
+	padding: 30px 20px;
 }
 
 .signupScreen__input {
 	background-color: rgba(92, 90, 90, 0.402);
 	color: #fff;
 	font-weight: 500;
-	font-size: 10px;
-	padding: 7px;
+	font-size: 0.7rem;
+	padding: 7px 15px;
 	border: none;
 	outline: none;
 	margin-top: 10px;
@@ -36,9 +36,9 @@
 
 .signupScreen > form > button {
 	background-color: #e50914;
-	padding: 8px;
+	padding: 7px 15px;
 	margin-top: 22px;
-	font-size: 8px;
+	font-size: 10px;
 	color: #fff;
 	width: 100%;
 	border: none;
@@ -69,12 +69,20 @@
 
 @media (min-width: 600px) {
 	.signupScreen__title {
-		font-size: 25px;
+		font-size: 30px;
 	}
 	.signupScreen__input {
 		font-size: 15px;
+		padding: 10px 15px;
 	}
 	.signupScreen > form > button {
-		font-size: 10px;
+		font-size: 15px;
+		padding: 10px 15px;
+	}
+	.signupScreen > form {
+		padding: 50px 30px;
+	}
+	.signupScreen > form > h4 {
+		font-size: 12px;
 	}
 }

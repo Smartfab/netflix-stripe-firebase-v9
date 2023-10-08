@@ -28,7 +28,13 @@ function PlansScreen() {
 				);
 				const querySnapshot = await getDocs(subscriptionQuery);
 				querySnapshot.forEach(async (subscriptionDoc) => {
-					console.log(subscriptionDoc.data());
+					setSubscription({
+						role: subscriptionDoc.data().role,
+						current_period_end:
+							subscriptionDoc.data().current_period_end.seconds,
+						current_period_start:
+							subscriptionDoc.data().current_period_start.seconds,
+					});
 				});
 			} catch (error) {
 				console.log("Error fetching subscription:", error);
@@ -66,6 +72,7 @@ function PlansScreen() {
 		fetchProducts();
 	}, []);
 	console.log(products);
+	console.log(subscription);
 
 	//     const {} = useQuery([""], async()=>{
 	// return Axios
@@ -99,19 +106,34 @@ function PlansScreen() {
 	};
 	return (
 		<div className="plansScreen">
+			{subscription && (
+				<h3>
+					Renewal date : {""}
+					{new Date(
+						subscription?.current_period_end * 1000
+					).toLocaleDateString()}{" "}
+				</h3>
+			)}
 			{Object.entries(products).map(([productId, productData], index) => {
-				//add logic to check if user's subscription is active
+				//TODO: add logic to check if user's subscription is active
+				const isCurrentPackage = productData.name
+					?.toLowerCase()
+					.includes(subscription.role);
 				return (
-					<div className="plansScreen__plan">
+					<div key={productId} className="plansScreen__plan">
 						<div className="plansScreen__info">
 							<h3 key={index}>Netflix {productData.name}</h3>
 							<h3 key={index}>{productData.description}</h3>
 						</div>
 						<button
-							className="plansScreen__btn"
-							onClick={() => loadCheckout(productData.prices.priceId)}
+							className={`${
+								isCurrentPackage ? "current__package" : "plansScreen__btn"
+							}`}
+							onClick={() => {
+								!isCurrentPackage && loadCheckout(productData.prices.priceId);
+							}}
 						>
-							Subscribe
+							{isCurrentPackage ? "Current Package" : "Subscribe"}
 						</button>
 					</div>
 				);

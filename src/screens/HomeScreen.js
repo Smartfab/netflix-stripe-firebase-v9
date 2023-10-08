@@ -7,7 +7,7 @@ import requests from "../Request";
 
 const HomeScreen = () => {
 	return (
-		<div className="homescreen">
+		<div className="homeScreen">
 			<Nav />
 			<Banner />
 			<Row

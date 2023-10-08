@@ -9,7 +9,16 @@
 	opacity: 0.8;
 }
 
-.plansScreen__plan > button {
+/* .plansScreen__plan > button {
+	background-color: #e50014;
+	padding: 10px 20px;
+	color: #fff;
+	border: none;
+	border-radius: 2px;
+	font-weight: 600;
+	cursor: pointer;
+} */
+.plansScreen__btn {
 	background-color: #e50014;
 	padding: 10px 20px;
 	color: #fff;
@@ -18,7 +27,27 @@
 	font-weight: 600;
 	cursor: pointer;
 }
+.current__package {
+	background-color: gray;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 2px;
+	font-weight: 600;
+}
 
 .plansScreen__plan:hover {
 	opacity: 1;
+}
+
+@media (max-width: 600px) {
+	.plansScreen__btn {
+		padding: 7px 10px;
+	}
+	.plansScreen__info > h3 {
+		font-size: 0.8rem;
+	}
+	.current__package {
+		padding: 5px 10px;
+	}
 }
